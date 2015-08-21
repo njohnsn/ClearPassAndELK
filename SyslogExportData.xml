@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TipsContents xmlns="http://www.avendasys.com/tipsapiDefs/1.0">
+  <TipsHeader exportTime="Fri Aug 21 16:40:25 CDT 2015" version="6.5"/>
+  <SyslogTargets>
+    <SyslogTarget protocol="UDP" port="5514" description="ELK Server" hostAddress="<change.me>"/>
+  </SyslogTargets>
+  <SyslogExportConfigurations>
+    <SyslogExportData description="" name="CPPM_to_ELK_RADCOA_Session_Detail" enabled="true" customSql="SELECT   id, session_id, attr_name, attr_value, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_radcoa_session_log_details    WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_RADIUS_Session" enabled="true" customSql="SELECT id as session_id, user_name, service_name, auth_method, auth_source, nas_ip, nas_port, end_host_id, request_status, error_code, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp   FROM tips_radius_session_log WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Dashboard_Summary" enabled="true" customSql="SELECT id as session_id, source as req_source ,user_name,service_name,alerts_present,nas_ip,nas_port,conn_status,login_status,error_code,host_mac as mac_address, to_char(Timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as Timestamp,  to_char(write_timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as write_timestamp  FROM tips_dashboard_summary  WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_SNMP_Session_Log" enabled="true" customSql="SELECT id as session_id, host_mac as mac_address, nad_ip as nas_ip, port_index, port_name, enf_profiles, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp    FROM tips_snmp_session_log  WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_RADCOA_Session_Log" enabled="true" customSql="SELECT  session_id, mac_address, user_name, nas_ip, nas_port, request_id, action_id,  action_type, action_name, action_display_name, application_name, status_code,   status_msg, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp   FROM tips_radcoa_session_log WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_TACACS_Session" enabled="true" customSql="SELECT server_id , user_session_id,  session_id , request_type , user_name , nas_ip , port, remote_address, priv_level, authen_action, authen_type, authen_method,  authen_service, service_name,  auth_source, tips_roles, tacacs_profiles, request_status,  error_code,  to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_tacacs_session_log WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Session_Detail" enabled="false" customSql="SELECT id, session_id,type, attr_name,attr_value, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp   FROM tips_session_log_details            WHERE        ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Policy_Server_Session" enabled="true" customSql="SELECT id as session_id,monitor_mode,auth_type,roles,audit_apt,spt,enf_profiles,to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_policy_server_session_log  WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Audit_Record" enabled="true" exportEventFormat="Standard" exportTemplate="Audit Records">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_RADIUS_Accounting" enabled="true" customSql="SELECT seq_num, id as session_id, user_name, nas_ip_address as nas_ip, nas_port, nas_port_type,   calling_station_id, called_station_id, framed_ip_address as ip_address, service_type, acct_status_type, acct_delay_time, acct_input_octets, acct_output_octets, acct_input_packets, acct_output_packets, acct_session_id, acct_authentic, acct_session_time, acct_terminate_cause, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_radius_accounting_log WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_DHCP_Snooping_Info" enabled="true" customSql="SELECT mac_address, ip_address, location, hostname, timestamp  FROM tips_dhcp_snooping_info                         WHERE (('1970-01-01 00:00:00 GMT'::timestamp &gt;= --START-TIME--) AND ('1970-01-01 00:00:00 GMT'::timestamp&lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Endpoint_Profile" enabled="true" customSql="SELECT mac as mac_address, ip as ip_address, static_ip, hostname, username, nad_ip as nas_ip, device_category, device_family, device_name, to_char(updated_at at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as updated_at, to_char(added_at at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as added_at         FROM tips_endpoint_profiles                          WHERE ((updated_at &gt;= --START-TIME--) AND (updated_at &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Post_Auth_Monit_Config" enabled="true" customSql="SELECT id as session_id, mac_address, user_id, entity_name, monit_data, enforce_status, profile_id, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_post_auth_monit_config WHERE  ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Alert" enabled="true" customSql="SELECT session_id, service_name, alert, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp
+     FROM tips_alerts    WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_Proc_Stats" enabled="true" customSql="SELECT id , process_id, cpu_usage, res_mem_usage, virt_mem_usage, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM  tips_sysmon_proc_stats WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_RADIUS_Accounting_Detail" enabled="true" customSql="SELECT id, session_id, acct_session_id, type, attr_name, attr_value, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp    FROM tips_radius_accounting_details_log          WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_System_Event" enabled="true" customSql="SELECT source as event_source, level, category, description, action_key, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp     FROM tips_system_events   WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_System_Stat" enabled="true" customSql="SELECT id, swap_size_used, slash_size_used, swap_memory_avail, system_memory_avail, cpu_raw_user, cpu_raw_nice, cpu_raw_system, cpu_raw_idle, mgmt_inf_status, data_inf_status, uptime, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp     FROM tips_sysmon_system_stats    WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_TACACS_Accounting_Detail" enabled="true" customSql="SELECT id,session_id,attr_name,attr_value, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp   FROM tips_tacacs_accounting_details  WHERE((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_TACACS_Accouting_Record" enabled="true" customSql="SELECT id, session_id, flags, user_name, nas_ip, port, remote_address, priv_level, authen_type,  authen_method,  authen_service, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp  FROM tips_tacacs_accounting_records WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+    <SyslogExportData description="" name="CPPM_to_ELK_WEBAUTH_Session" enabled="true" customSql="SELECT id as session_id, host_mac as mac_address, host_ip as ip_address, auth_source, to_char(timestamp at time zone 'UTC', 'YYYY-MM-DD&quot;T&quot;HH24:MI:SS.MS&quot;Z&quot;') as timestamp    FROM  tips_webauth_session_log    WHERE ((timestamp &gt;= --START-TIME--) AND (timestamp &lt;= --END-TIME--));" exportEventFormat="Standard" exportTemplate="Session Logs">
+      <SyslogServerNameList>
+        <string><change.me></string>
+      </SyslogServerNameList>
+    </SyslogExportData>
+  </SyslogExportConfigurations>
+</TipsContents>
