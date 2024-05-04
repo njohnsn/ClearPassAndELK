@@ -1,5 +1,7 @@
 # ClearPassAndELK
 
+*NOTE:*  I'm archiving ths repository as we are no longer using ELK to archive ClearPass transactions
+
 ## Introduction
 
 The purpose of this repository is to provide a place to store files and instructions that allow you to utilize an ELK (Elasticsearch, Logstash, Kibanna) server to store and analyze SYSLOG data from Aruba ClearPass.
